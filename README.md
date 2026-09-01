@@ -1,4 +1,4 @@
-# Seafood Guest worker and Permanent Visa Dataset
+# Seafood Guest Worker and Permanent Visa Dataset
 
 This repository contains R code used to download, import, clean, classify, and analyze U.S. foreign labor disclosure data for seafood-related employment.
 
