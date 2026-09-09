@@ -6,7 +6,6 @@
 library(tidyverse)
 library(stringr)
 library(lubridate)
-library(zipcodeR)
 
 # --------------------------------------------------
 # 1. Load raw imported data
@@ -390,20 +389,22 @@ visa_seafood <- visa_seafood %>%
 # --------------------------------------------------
 # 15. Fill missing worksite states using ZIP lookup
 # --------------------------------------------------
-missing_zips <- visa_seafood %>%
-  filter(is.na(WORKSITE_STATE), !is.na(WORKSITE_POSTAL_CODE)) %>%
-  distinct(WORKSITE_POSTAL_CODE) %>%
-  pull(WORKSITE_POSTAL_CODE)
+zip_lookup <- readr::read_csv("data_raw/zip_state_lookup.csv", show_col_types = FALSE) %>%
+  mutate(
+    zip = str_pad(as.character(zip), width = 5, side = "left", pad = "0"),
+    state = toupper(as.character(state))
+  ) %>%
+  distinct(zip, .keep_all = TRUE)
 
-if (length(missing_zips) > 0) {
-  zip_lookup <- reverse_zipcode(missing_zips) %>%
-    select(zipcode, state)
-  
-  visa_seafood <- visa_seafood %>%
-    left_join(zip_lookup, by = c("WORKSITE_POSTAL_CODE" = "zipcode")) %>%
-    mutate(WORKSITE_STATE = coalesce(WORKSITE_STATE, state)) %>%
-    select(-state)
-}
+visa_seafood <- visa_seafood %>%
+  mutate(
+    WORKSITE_POSTAL_CODE = str_pad(as.character(WORKSITE_POSTAL_CODE), width = 5, side = "left", pad = "0")
+  ) %>%
+  left_join(zip_lookup, by = c("WORKSITE_POSTAL_CODE" = "zip")) %>%
+  mutate(
+    WORKSITE_STATE = coalesce(WORKSITE_STATE, state)
+  ) %>%
+  select(-state)
 
 # --------------------------------------------------
 # 16. Secondary category assignment for uncoded records
