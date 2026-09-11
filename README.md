@@ -58,7 +58,7 @@ https://www.dol.gov/agencies/eta/foreign-labor/performance
 
 To reproduce the analysis:
 
-1. Clone or download this repository.
+1. Clone or download this repository (including the zip_state_lookup.csv file).
 2. Open the project in R or RStudio with the repository root as the working directory.
 3. Install any required R packages if they are not already available.
 4. Run `01_download_import.R` to download and import the raw disclosure files.
@@ -77,6 +77,10 @@ Because the scripts write outputs to project-relative folders (`data_raw/`, `dat
 **Note:** This is a live government database. Records may be added, corrected,
 or removed by the BLS over time, so re-running the scraping script in the future
 may not return identical results. 
+
+## Declaration of generative AI use:
+Generative AI was used to assist in writing and debugging R code used to download, clean, and prepare tables and figures as well as to develop this GitHub repository. All code was reviewed, tested, and verified by the authors, who take full responsibility for its accuracy and outputs.
+
 
 ## Contact for more information
 
