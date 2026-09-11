@@ -74,6 +74,10 @@ Because the scripts write outputs to project-relative folders (`data_raw/`, `dat
 - The scripts were written to support reproducibility and transparency.
 - Declaration of generative AI use: Generative AI was used to assist in R code writing and debugging to clean data, generate tables and figures, and to develop the file structure for a GitHub repository. All code was reviewed, tested, and verified by the authors, who take full responsibility for its accuracy and outputs. Generative AI was not used for conceptual design, interpretation of results, manuscript writing or editing.
 
+**Note:** This is a live government database. Records may be added, corrected,
+or removed by the BLS over time, so re-running the scraping script in the future
+may not return identical results. 
+
 ## Contact for more information
 
 Dave Love, PhD, MSPH  
