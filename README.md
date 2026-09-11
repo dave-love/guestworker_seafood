@@ -1,6 +1,6 @@
 # Seafood Guest Worker and Permanent Visa Dataset
 
-This repository contains R code used to download, import, clean, classify, and analyze U.S. foreign labor disclosure data for seafood-related employment.
+This repository contains R code used to download, import, clean, classify, and analyze U.S. foreign labor disclosure data for seafood-related employment. These data were used in a manuscript about guest workers in the U.S. seafood industry.
 
 ## Repository contents
 
@@ -72,6 +72,7 @@ Because the scripts write outputs to project-relative folders (`data_raw/`, `dat
 - The cleaning script uses a combination of NAICS codes, keyword searches of job titles and employer names, and manual recodes to classify records into aquaculture, fishing, and seafood processing.
 - Some outputs rely on a small number of manual exclusions and recodes to address false positives from keyword matching.
 - The scripts were written to support reproducibility and transparency.
+- Declaration of generative AI use: Generative AI was used to assist in R code writing and debugging to clean data, generate tables and figures, and to develop the file structure for a GitHub repository. All code was reviewed, tested, and verified by the authors, who take full responsibility for its accuracy and outputs. Generative AI was not used for conceptual design, interpretation of results, manuscript writing or editing.
 
 ## Contact for more information
 
